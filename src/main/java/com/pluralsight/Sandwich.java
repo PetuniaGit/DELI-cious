@@ -28,7 +28,7 @@ public class Sandwich extends Item {
         this.toasted = toasted;
         this.price = calculateCost();
     }
-
+       // Calculates and returns the cost of the sandwich based on its size, meats, and cheeses.
     @Override
     public double calculateCost() {
         double cost = BASE_PRICES[(size / 4) - 1];
@@ -46,7 +46,7 @@ public class Sandwich extends Item {
         }
         return cost;
     }
-
+     // Returns a string representation of the sandwich, including its size, bread type, meats, cheeses, toppings, sauces, and toasting option.
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

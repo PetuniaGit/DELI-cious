@@ -1,0 +1,6 @@
+Order ID: 20240528-092147
+Items:
+8" white Sandwich with meats: cheeses: american (extra), toppings: tomatoes, pickles, onions, sauces: ranch, mustard, toasted: true
+small cola Drink
+lays Chips
+Total Cost: $12.60

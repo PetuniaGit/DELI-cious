@@ -50,20 +50,20 @@ public class MainApplication {
             }
         }
     }
-
+     // Prompt user to choose sandwich size and bread
     private void addSandwich(Scanner scanner) {
         System.out.print("Select size (4, 8, 12): ");
         int size = Integer.parseInt(scanner.nextLine());
         System.out.print("Select bread (white, wheat, rye, wrap): ");
         String bread = scanner.nextLine();
 
-
+       // ask user to choose meat
         ArrayList<String[]> meats = new ArrayList<>();
         while (true) {
             System.out.print("Add meat (steak, ham, salami, roast beef, chicken, bacon, none to stop): ");
             String meat = scanner.nextLine();
             if ("none".equals(meat)) break;
-            System.out.print("Extra meat? (yes or no): ");
+           System.out.print("Extra meat? (yes or no): ");
             String extra = scanner.nextLine();
             if ("yes".equals(extra)) {
                 meats.add(new String[]{meat, "extra"});
@@ -71,8 +71,9 @@ public class MainApplication {
                 meats.add(new String[]{meat, "regular"});
             }
         }
+        // ask user to choose cheese
 
-        ArrayList<String[]> cheeses = new ArrayList<>();
+       ArrayList<String[]> cheeses = new ArrayList<>();
         while (true) {
             System.out.print("Add cheese (american, provolone, cheddar, swiss, none to stop): ");
             String cheese = scanner.nextLine();
@@ -82,6 +83,7 @@ public class MainApplication {
             cheeses.add(new String[]{cheese, "yes".equals(extra) ? "extra" : "regular"});
         }
 
+       // ask user to choose topping
         ArrayList<String> toppings = new ArrayList<>();
         while (true) {
             System.out.print("Add topping (lettuce, peppers, onions, tomatoes, jalapenos, cucumbers, pickles, guacamole, mushrooms, none to stop): ");
@@ -89,7 +91,7 @@ public class MainApplication {
             if ("none".equals(topping)) break;
             toppings.add(topping);
         }
-
+        // ask user to choose sauce
         ArrayList<String> sauces = new ArrayList<>();
         while (true) {
             System.out.print("Add sauce (mayo, mustard, ketchup, ranch, thousand islands, vinaigrette, none to stop): ");
@@ -97,14 +99,14 @@ public class MainApplication {
             if ("none".equals(sauce)) break;
             sauces.add(sauce);
         }
-
+         // toasted choice
         System.out.print("Would you like the sandwich toasted? (yes or no): ");
         boolean toasted = "yes".equals(scanner.nextLine());
 
         Sandwich sandwich = new Sandwich(size, bread, meats, cheeses, toppings, sauces, toasted);
         currentOrder.addItem(sandwich);
     }
-
+     // add drink choice
     private void addDrink(Scanner scanner) {
         System.out.print("Select drink size (small, medium, large): ");
         String size = scanner.nextLine();
@@ -113,7 +115,7 @@ public class MainApplication {
         Drink drink = new Drink(size, flavor);
         currentOrder.addItem(drink);
     }
-
+     // add chips choice
     private void addChips(Scanner scanner) {
         System.out.print("Select chip type: ");
         String type = scanner.nextLine();
@@ -122,12 +124,16 @@ public class MainApplication {
     }
 
     private void checkout(Scanner scanner) {
+        // Display order details
         System.out.println("Order Details:");
         for (Item item : currentOrder.items) {
             System.out.println(item);
         }
+        // Calculate and display total cost
         System.out.println("Total Cost: $" + String.format("%.2f", currentOrder.calculateTotal()));
+        // Prompt for confirmation
         System.out.print("Confirm order? (yes or no): ");
+        // If confirmed, generate receipt; otherwise, cancel order
         if ("yes".equals(scanner.nextLine())) {
             currentOrder.generateReceipt();
             System.out.println("Order confirmed and receipt generated.");

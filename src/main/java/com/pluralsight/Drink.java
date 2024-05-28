@@ -6,13 +6,15 @@ public class Drink extends Item {
     private String size;  // small, medium, large
     private String flavor;
 
+    // Constructor for creating a drink with the specified size and flavor.
+
     public Drink(String size, String flavor) {
         super(size + " Drink");
         this.size = size;
         this.flavor = flavor;
         this.price = calculateCost();
     }
-
+     // Constructor for creating a drink with the specified size and flavor.
     @Override
     public double calculateCost() {
         switch (size) {
@@ -26,7 +28,7 @@ public class Drink extends Item {
                 return 0.0;
         }
     }
-
+     // Returns a string representation of the drink, including its size and flavor.
     @Override
     public String toString() {
         return size + " " + flavor + " Drink";
